@@ -1,4 +1,5 @@
 <?php
+
 namespace ConfrariaWeb\Acl\Databases\Seeds;
 
 use Illuminate\Console\Command;
@@ -6,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class DatabaseSeeder extends Seeder
+class AclSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -83,15 +84,9 @@ class DatabaseSeeder extends Seeder
 
     private function truncateTables()
     {
-        //if ($this->command->confirm('Deseja truncar todas as tabelas referentes ao acl?')) {
-            $this->command->info('Fazendo um truncate nas tabelas acls, sai da frente... ;/');
-            Schema::disableForeignKeyConstraints();
-            DB::table(config('cw_acl.role_user_table'))->truncate();
-            DB::table(config('cw_acl.permission_role_table'))->truncate();
-            DB::table(config('cw_acl.roles_table'))->truncate();
-            DB::table(config('cw_acl.permissions_table'))->truncate();
-            Schema::enableForeignKeyConstraints();
-            $this->command->info('Pronto, truncates feitos em acl, acho que com sucesso :D');
-        //}
+        DB::table(config('cw_acl.role_user_table'))->truncate();
+        DB::table(config('cw_acl.permission_role_table'))->truncate();
+        DB::table(config('cw_acl.roles_table'))->truncate();
+        DB::table(config('cw_acl.permissions_table'))->truncate();
     }
 }

@@ -21,7 +21,7 @@ trait AclUserTrait
 
     public function hasRole($role)
     {
-        return ($this->isAdmin() || $this->roles->contains('name', $role));
+        return $this->isAdmin() || $this->roles->contains('name', $role);
     }
 
     public function hasPermission($permission)

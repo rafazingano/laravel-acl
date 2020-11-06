@@ -37,7 +37,7 @@ class AclServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../../databases/Migrations');
         $this->loadTranslationsFrom(__DIR__ . '/../Translations', 'acl');
         $this->publishes([__DIR__ . '/../../config/cw_acl.php' => config_path('cw_acl.php')], 'config');
-        $this->registerSeedsFrom(__DIR__.'/../../databases/Seeds');
+        //$this->registerSeedsFrom(__DIR__.'/../../databases/Seeds');
 
         Blade::directive('role', function($expression) {
             return "<?php if(auth()->user()->hasRole({$expression})) : ?>";

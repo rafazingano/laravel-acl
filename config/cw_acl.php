@@ -2,7 +2,7 @@
 
 return [
     'administrator' => [
-        'emails' => ['rafazingano@gmail.com', 'confrariaweb@gmail.com'],
+        'emails' => ['confrariaweb@gmail.com'],
     ],
 
     'user' => 'App\Models\User',

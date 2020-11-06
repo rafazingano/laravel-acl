@@ -14,7 +14,7 @@ class CreateAclTable extends Migration
             $table->string('name')->unique();
             $table->string('display_name')->nullable();
             $table->string('description')->nullable();
-            $table->longText('settings')->nullable()->default(null);
+            $table->json('options')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
