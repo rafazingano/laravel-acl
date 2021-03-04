@@ -2,7 +2,7 @@
 
 namespace ConfrariaWeb\Acl\Models;
 
-use ConfrariaWeb\Acl\Scopes\AccountRoleScope;
+//use ConfrariaWeb\Acl\Scopes\AccountRoleScope;
 use ConfrariaWeb\Acl\Scopes\RoleOrderByScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
@@ -31,7 +31,7 @@ class Role extends Model
     protected static function booted()
     {
         static::addGlobalScope(new RoleOrderByScope);
-        static::addGlobalScope(new AccountRoleScope);
+        //static::addGlobalScope(new AccountRoleScope);
     }
 
     public function __construct(array $attributes = [])
