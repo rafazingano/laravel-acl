@@ -15,8 +15,13 @@ class CheckPermission
      */
     public function handle($request, Closure $next)
     {
-        if (in_array('auth', $request->route()->middleware())) {
-            abort_unless($request->user()->hasPermission($request->route()->getName()), 403);
+        $routeMiddleware = $request->route()->middleware();
+        $getRouteName = $request->route()->getName();
+        if (
+            in_array('auth', $routeMiddleware) &&
+            !in_array($getRouteName, ['logout'])
+        ) {
+            abort_unless($request->user()->hasPermission($getRouteName), 403);
         }
         return $next($request);
     }

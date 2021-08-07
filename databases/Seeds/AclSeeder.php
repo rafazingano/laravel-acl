@@ -19,6 +19,10 @@ class AclSeeder extends Seeder
         $this->truncateTables();
         $this->createRoles();
         $this->createPermissions();
+        DB::table(config('cw_acl.permission_role_table'))->insert([
+            'role_id' => 2,
+            'permission_id' => 1
+        ]);
     }
 
     private function createRoles()
@@ -28,14 +32,12 @@ class AclSeeder extends Seeder
             [
                 'name' => 'administrator',
                 'display_name' => 'Administrador',
-                'description' => 'Administrador do sistema',
-                'settings' => NULL
+                'description' => 'Administrador do sistema'
             ],
             [
                 'name' => 'guest',
                 'display_name' => 'Convidado',
-                'description' => 'Convidado do sistema',
-                'settings' => NULL
+                'description' => 'Convidado do sistema'
             ],
         ];
         foreach ($roles as $role) {
@@ -50,27 +52,32 @@ class AclSeeder extends Seeder
         $permissions_table = config('cw_acl.permissions_table');
         $permissions = [
             [
-                'name' => 'admin.roles.index',
+                'name' => 'dashboard',
+                'display_name' => 'Dashboard',
+                'description' => 'Dashboard',
+            ],
+            [
+                'name' => 'dashboard.roles.index',
                 'display_name' => 'Lista de perfis',
                 'description' => 'Lista de perfis',
             ],
             [
-                'name' => 'admin.roles.create',
+                'name' => 'dashboard.roles.create',
                 'display_name' => 'Criar perfil',
                 'description' => 'Criar perfil',
             ],
             [
-                'name' => 'admin.roles.show',
+                'name' => 'dashboard.roles.show',
                 'display_name' => 'Ver perfil',
                 'description' => 'Ver perfil',
             ],
             [
-                'name' => 'admin.roles.edit',
+                'name' => 'dashboard.roles.edit',
                 'display_name' => 'Editar perfil',
                 'description' => 'Editar perfil',
             ],
             [
-                'name' => 'admin.roles.destroy',
+                'name' => 'dashboard.roles.destroy',
                 'display_name' => 'Deletar perfil',
                 'description' => 'Deletar perfil',
             ],
@@ -84,9 +91,9 @@ class AclSeeder extends Seeder
 
     private function truncateTables()
     {
-        DB::table(config('cw_acl.role_user_table'))->truncate();
-        DB::table(config('cw_acl.permission_role_table'))->truncate();
-        DB::table(config('cw_acl.roles_table'))->truncate();
-        DB::table(config('cw_acl.permissions_table'))->truncate();
+        //DB::table(config('cw_acl.role_user_table'))->truncate();
+        //DB::table(config('cw_acl.permission_role_table'))->truncate();
+        //DB::table(config('cw_acl.roles_table'))->truncate();
+        //DB::table(config('cw_acl.permissions_table'))->truncate();
     }
 }
