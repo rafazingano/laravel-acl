@@ -2,21 +2,19 @@
 
 namespace ConfrariaWeb\Acl\Services;
 
-use ConfrariaWeb\Acl\Contracts\RoleContract;
-use ConfrariaWeb\Vendor\Traits\ServiceTrait;
+use ConfrariaWeb\Acl\Models\Role;
 
 class RoleService
 {
-    use ServiceTrait;
 
-    public function __construct(RoleContract $role)
+    public function __construct(Role $role)
     {
-        $this->obj = $role;
+        $this->role = $role;
     }
 
     function pluck()
     {
-        return $this->obj->pluck('display_name', 'id');
+        return $this->role->pluck('display_name', 'id');
     }
 
 }

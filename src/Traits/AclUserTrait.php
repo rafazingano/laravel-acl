@@ -6,17 +6,18 @@ use Illuminate\Support\Facades\Config;
 
 trait AclUserTrait
 {
+
     public function roles()
     {
         return $this->belongsToMany(Config::get('cw_acl.role'), Config::get('cw_acl.role_user_table'), Config::get('cw_acl.user_foreign_key'));
     }
 
+    /**
+     * Get all of the deployments for the project.
+     */
     public function permissions()
     {
-        return $this->hasManyDeep(
-            Config::get('cw_acl.permission'),
-            [Config::get('cw_acl.role_user_table'), Config::get('cw_acl.role'), Config::get('cw_acl.permission_role_table')]
-        );
+        return ;//$this->hasManyThrough(Config::get('cw_acl.permission'), Environment::class);
     }
 
     public function hasRole($role)

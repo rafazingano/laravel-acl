@@ -18,16 +18,11 @@
         }
     ],
     "require": {
-        "confrariaweb/laravel-user": "dev-master",
-        "confrariaweb/laravel-vendor": "dev-master",
-        "laravelcollective/html": ">=6.0",
-        "staudenmeir/eloquent-has-many-deep": "^1.12",
-        "yajra/laravel-datatables-oracle":"~9.0"
+        "confrariaweb/laravel-user": "dev-master"
     },
     "autoload": {
         "psr-4": {
-            "ConfrariaWeb\\Acl\\": "src",
-            "ConfrariaWeb\\Acl\\Databases\\Seeds\\": "databases/Seeds"
+            "ConfrariaWeb\\Acl\\": "src"
         }
     },
     "extra": {
