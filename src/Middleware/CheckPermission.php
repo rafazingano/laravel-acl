@@ -3,6 +3,7 @@
 namespace ConfrariaWeb\Acl\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class CheckPermission
 {
@@ -15,14 +16,8 @@ class CheckPermission
      */
     public function handle($request, Closure $next)
     {
-        $routeMiddleware = $request->route()->middleware();
         $getRouteName = $request->route()->getName();
-        if (
-            in_array('auth', $routeMiddleware) &&
-            !in_array($getRouteName, ['logout'])
-        ) {
-            abort_unless($request->user()->hasPermission($getRouteName), 403);
-        }
+        abort_unless(Auth::user()->hasPermission($getRouteName), 403);
         return $next($request);
     }
 }

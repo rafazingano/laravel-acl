@@ -5,6 +5,13 @@ return [
         'emails' => ['confrariaweb@gmail.com'],
     ],
 
+    'defaults' => [
+        'role' => [
+            'administrator' => env('ACL_DEFAULT_ROLE_ADMIN', 1),
+            'guest' => env('ACL_DEFAULT_ROLE_GUEST', 2),
+        ],
+    ],
+
     'user' => 'App\Models\User',
     'users_table' => 'users',
 
